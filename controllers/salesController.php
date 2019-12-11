@@ -504,6 +504,7 @@ if(isset($clientinfo) && !empty($clientinfo)){
                  $forma, $band, $desconto,$recebido, $troco, $cpf, $cnpj, $sub_total, $acrescimo,$modelo,
                   $tpImp, $infCpl,$tpNF, $tpAmb, $finNFe, $indPres, $indFinal, $idDest, $modFrete, $item,
                   $qVol, $esp, $marca, $nVol, $pesoL, $pesoB,$placa, $UF, $RNTC, $trans_id);
+                
                 header("Location: ".BASE_URL."/sales");
                }
               

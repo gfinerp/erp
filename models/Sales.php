@@ -221,25 +221,25 @@ public function getCaixa($id, $id_company){
 
 
  public function addSale($id_company, $id_salesman, $id_client = '',  $user_id, $quant, 
-    $status, $forma,$band, $desconto = '', $recebido = '', $troco = '',$cpf,$cnpj, $sub_total,
+    $status, $forma,$band, $desconto = '', $recebido = '', $troco = '',$cpf = '',$cnpj = '', $sub_total,
      $acrescimo = '',$modelo, $tpImp, $infCpl, $tpNF, $tpAmb, $finNFe, $indPres, $idDest, $indFinal,
      $modFrete, $item = '', $qVol = '', $esp = '', $marca = '', $nVol = '', $pesoL = '', $pesoB = '',
       $placa = '', $UF = '', $RNTC = '', $trans_id = ''){
         $i = new Inventory();
-         
+
         //inserindo a venda
         $sql = $this->db->prepare("INSERT INTO sales SET id_company = :id_company,
-         id_salesman = :id_salesman, id_client = :id_client, 
-          id_user = :id_user, date_sale = NOW(), total_price = :total_price,
-           status = :status, forma = :forma, band = :band, desconto = :desconto,
-            recebido = :recebido, troco = :troco, cpf = :cpf, cnpj = :cnpj,
-             sub_total=:sub_total, acrescimo = :acrescimo, modelo = :modelo,
-              tpImp = :tpImp, infCpl = :infCpl, tpNF = :tpNF, tpAmb = :tpAmb,
-               finNFe = :finNFe, indPres = :indPres, indFinal = :indFinal,
-                idDest = :idDest, modFrete = :modFrete, item = :item, qVol = :qVol,
-                esp = :esp, marca = :marca, nVol = :nVol, pesoL = :pesoL, pesoB = :pesoB,
-                placa = :placa, UF = :UF, RNTC = :RNTC, trans_id = :trans_id");
-    
+            id_salesman = :id_salesman, id_client = :id_client, cpf = :cpf, cnpj = :cnpj,
+            id_user = :id_user, date_sale = NOW(), total_price = :total_price,
+            sub_total=:sub_total, desconto = :desconto, acrescimo = :acrescimo, modelo = :modelo,
+            tpImp = :tpImp, infCpl = :infCpl, tpNF = :tpNF, tpAmb = :tpAmb,
+            finNFe = :finNFe, indPres = :indPres, indFinal = :indFinal,
+            idDest = :idDest, modFrete = :modFrete, item = :item, qVol = :qVol,
+            esp = :esp, marca = :marca, nVol = :nVol, pesoL = :pesoL, pesoB = :pesoB,
+            placa = :placa, UF = :UF, RNTC = :RNTC, trans_id = :trans_id,
+            recebido = :recebido, troco = :troco,
+            status = :status, forma = :forma, band = :band");
+ 
         $sql->bindValue(":id_company", $id_company);
         $sql->bindValue(":id_salesman", $id_salesman);
         $sql->bindValue(":id_client", $id_client);
@@ -280,7 +280,6 @@ public function getCaixa($id, $id_company){
         $sql->execute();
 
         $id_sale = $this->db->lastInsertId();
-        
 
 //inserido produtos
        $total_price = 0;
